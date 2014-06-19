@@ -1,0 +1,33 @@
+# This file contains the user settings for maybe confirm.  Any `yml`
+# file in this directory will be considered a settings provider.
+
+# Each settings file has a category name and description.  These are
+# shown in the settings viewer/editor where they are grouped into
+# categories for easy access.
+# Each setting is a YAML map that maps the setting name with the
+# following properties:
+# 1. description: This is shown to the user when they are editing the
+#    settings page. Required.
+# 2. message: This is shown to the user as part of the dialog that
+#    interrupts them for confirmation. Default: "Are you sure?"
+# 3. message_title: This is the title of the dialog that is shown to
+#    the user.  Default: "".
+# 4. dont_show_text: This accompanies the checkbox.
+# 5. continue_text: This is the text on the "continue" button.
+# 6. cancel_text: This is the text on the "cancel" button.
+#
+# Example:
+# category: Example
+# description: This category contains example settings for maybe confirm.
+# settings:
+#     skip_user_confirmation_dialog_on_close_form:
+#         description: >
+#             This setting will control if you are shown the confirmation dialog
+#             when you close the form.
+#         message: >
+#             Are you sure you want to close the form? All your settings will be
+#             lost if you do so.
+#         message_title: Are you sure?
+#         dont_show_text: Don't show this again.
+#         continue_text: Close the form
+#         cancel_text: Ah, let me rethink!

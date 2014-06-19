@@ -1,0 +1,55 @@
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `add_settings' for #<Class:0x00000003674488>
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `add_settings' for #<Class:0x0000000208ab40>
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `category' for #<Hash:0x0000000252e728>
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `category' for #<Hash:0x00000001cee540>
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `description' for #<Hash:0x000000021bb348>
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `description' for #<Hash:0x000000030b6c58>
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `description' for #<Hash:0x00000001cf64c0>
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `typed_store' for MCUserSettings(Table doesn't exist):Class
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `settings' for #<Hash:0x0000000360b118>
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `each' for nil:NilClass
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `each' for nil:NilClass
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `each' for nil:NilClass
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+undefined method `HashWithIndifferentAccess' for MCUserSettings(Table doesn't exist):Class
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+uninitialized constant MCUserSettings::SETTINGS_FIELDS
+Connecting to database specified by database.yml
+Failed to import settings /home/navilan/openstax/maybe_confirm/spec/dummy/config/mc_user_settings/example_settings.yml
+uninitialized constant MCUserSettings::SETTINGS_FIELDS
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.7ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
