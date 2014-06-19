@@ -4,14 +4,15 @@ class MCUserSettings < ActiveRecord::Base
                     :settings, :description, :message, :message_title,
                     :dont_show_text, :continue_text, :cancel_text]
 
-  attr_accessor *SETTING_FIELDS
-
   cattr_accessor :categories
   @@categories = {}
+  @@all_settings = []
 
-  scope :for, lambda { |user|
-    scoped.find_by_user_id user.id
-  }
+  def self.for (user)
+    if user
+      find_or_create_by_user_id(:user_id => user.id)
+    end
+  end
 
   def self.add_settings(settings_data)
     category = settings_data[:category]
@@ -25,12 +26,14 @@ class MCUserSettings < ActiveRecord::Base
     typed_store :settings do |s|
       settings_data[:settings].each do |setting, data|
         sym = setting.to_sym
+        @@all_settings << sym
         unless SETTING_FIELDS.include? sym
           category[:settings][sym] = data
-          s.boolean sym, default: false, null: false
+          s.boolean sym, default: false, null: true
         end
       end
     end
+    attr_accessible *(SETTING_FIELDS + @@all_settings)
   end
 
   Dir.glob(File.join(Rails.root, 'config', 'mc_user_settings','*.yml')).each do |f|
