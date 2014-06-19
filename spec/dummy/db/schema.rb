@@ -13,14 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20140619071957) do
 
-  create_table "mc_user_settings", :force => true do |t|
+  create_table "maybe_confirm_user_settings", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.text     "settings"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "mc_user_settings", ["user_id"], :name => "index_mc_user_settings_on_user_id"
+  add_index "maybe_confirm_user_settings", ["user_id"], :name => "index_maybe_confirm_user_settings_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"
