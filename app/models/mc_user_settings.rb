@@ -1,8 +1,9 @@
 require 'activerecord-typedstore'
 class MCUserSettings < ActiveRecord::Base
-  SETTING_FIELDS = [:user_id, :category, :category_description,
-                    :settings, :description, :message, :message_title,
-                    :dont_show_text, :continue_text, :cancel_text]
+  CATEGORY_FIELDS = [:category, :category_description]
+  SETTING_FIELDS  = [:description, :message, :message_title,
+                     :dont_show_text, :continue_text, :cancel_text]
+  MODEL_FIELDS    = [:user_id]
 
   cattr_accessor :categories
   @@categories = {}
@@ -27,13 +28,30 @@ class MCUserSettings < ActiveRecord::Base
       settings_data[:settings].each do |setting, data|
         sym = setting.to_sym
         @@all_settings << sym
-        unless SETTING_FIELDS.include? sym
+        unless MODEL_FIELDS.include? sym
           category[:settings][sym] = data
           s.boolean sym, default: false, null: true
         end
       end
     end
-    attr_accessible *(SETTING_FIELDS + @@all_settings)
+    attr_accessible *(MODEL_FIELDS + @@all_settings)
+  end
+
+  def self.setting_details_for (setting)
+    details = {}
+    category = @@categories.detect do |cat, data|
+      data[:settings].include? setting.to_sym
+    end
+    if category
+      data = category[1]
+      details[:category] = category[0]
+      details[:category_description] = data[:description]
+      setting_data = data[:settings][setting.to_sym]
+      SETTING_FIELDS.each do |set|
+        details[set] = setting_data[set]
+      end
+    end
+    details
   end
 
   Dir.glob(File.join(Rails.root, 'config', 'mc_user_settings','*.yml')).each do |f|

@@ -20,4 +20,16 @@ describe MCUserSettings do
     newsets = MCUserSettings.for @user
     assert newsets.skip_user_confirmation_dialog_on_close_form
   end
+
+  it 'gets descriptive values' do
+    expected = YAML.load File.open File.join(Rails.root, 'config', 'mc_user_settings','example_settings.yml')
+    expected["settings"].each do |set, data|
+      actual = MCUserSettings.setting_details_for(set)
+      data.each do |k, v|
+        actual[k.to_sym].must_equal v
+      end
+      actual[:category].must_equal expected["category"]
+      actual[:category_description].must_equal expected["description"]
+    end
+  end
 end
