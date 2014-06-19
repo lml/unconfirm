@@ -3,7 +3,7 @@ require 'spec_helper'
 module MaybeConfirm
   describe UserSettings do
     before do
-      @user = User.create email: "dummy@dummy.com", handle: "dummy"
+      setup_model_spec
     end
 
     it 'adds attributes based on the setting providers' do

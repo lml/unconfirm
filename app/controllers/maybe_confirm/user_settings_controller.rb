@@ -1,16 +1,22 @@
 module MaybeConfirm
   class UserSettingsController < ApplicationController
-    skip_before_filter :authenticate_user!
 
     def index
-      @settings = UserSettings.for(current_user)
-      format.json { render json: {:success => true,  :settings => @settings.settings} }
+      if current_user
+        @settings = UserSettings.for(current_user)
+      end
+      settings = @settings? @settings.settings : {}
+      respond_to do |format|
+        format.json { render json: {:success => true, :settings => settings} }
+      end
     end
 
     def update
-      @settings = UserSettings.for(current_user)
+      if current_user
+        @settings = UserSettings.for(current_user)
+      end
       respond_to do |format|
-        if @settings.update_attributes(params[:settings])
+        if @settings and @settings.update_attributes(params[:settings])
           format.json { render json: {:success => true, :message => 'Settings were successfully updated.'} }
         else
           Rails.logger.info(@settings.errors.messages.inspect)
@@ -18,5 +24,6 @@ module MaybeConfirm
         end
       end
     end
+
   end
 end

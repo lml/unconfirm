@@ -9,3 +9,11 @@ MaybeConfirm::ApplicationController.class_eval do
   include ApplicationHelper
 end
 
+def setup_model_spec
+  @user = User.create email: "dummy@dummy.com", handle: "dummy"
+end
+
+def setup_controller_spec
+  class_eval {include ApplicationHelper}
+  setup_model_spec
+end
