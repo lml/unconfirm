@@ -1,12 +1,11 @@
 module Unconfirm
   class UserSettingsController < ApplicationController
-    include ApplicationHelper
 
     def show
       respond_to do |format|
         format.json {
           render json: {:success => true,
-                        :settings => unconfirm_user_settings} }
+                        :settings => UserSettings.cached_data_for(current_user)} }
       end
     end
 
@@ -14,7 +13,6 @@ module Unconfirm
       settings = UserSettings.for(current_user)
       respond_to do |format|
         if not settings.nil? and settings.update_attributes(params[:settings])
-          update_unconfirm_user_settings! settings
           format.json {
             render json: {:success => true,
                           :message => 'Settings were successfully updated.'} }
@@ -29,6 +27,5 @@ module Unconfirm
         end
       end
     end
-
   end
 end

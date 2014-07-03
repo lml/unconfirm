@@ -2,6 +2,18 @@ require 'activerecord-typedstore'
 
 module Unconfirm
   class UserSettings < ActiveRecord::Base
+    after_update :clear_cache
+    after_create :clear_cache
+    after_destroy :clear_cache
+
+    def self.cache_key(user_id)
+      "unconfirm_data_for_#{user_id}"
+    end
+
+    def clear_cache
+      Rails.cache.delete(self.class.cache_key(self.user_id))
+    end
+
     CATEGORY_FIELDS = [:category, :category_description]
     SETTING_FIELDS  = [:description, :message, :message_title,
                        :dont_show_text, :continue_text, :cancel_text]
@@ -25,9 +37,20 @@ module Unconfirm
       'unconfirm_'
     end
 
-    def self.for (user)
+    def self.for(user)
       if user
-        find_or_create_by_user_id(:user_id => user.id)
+          find_or_create_by_user_id(:user_id => user.id)
+      end
+    end
+
+    def self.cached_data_for(user)
+      if user
+        Rails.cache.fetch(self.cache_key(user.id)) do
+          sets = self.for(user)
+          sets.truthy_settings
+        end
+      else
+        {}
       end
     end
 

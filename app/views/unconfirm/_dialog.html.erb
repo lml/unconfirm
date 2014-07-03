@@ -1,6 +1,6 @@
 <% if current_user.present? %>
   <%= javascript_tag do %>
-    window.unconfirmUserSettings = <%= raw unconfirm_user_settings.to_json %>;
+    window.unconfirmUserSettings = <%= raw unconfirm_settings.to_json %>;
   <% end %>
   <div id="unconfirm_dialog" style="display:none" title="">
     <div class="uc-dialog-body"></div>
