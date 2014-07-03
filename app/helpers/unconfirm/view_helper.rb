@@ -9,7 +9,9 @@ module Unconfirm
           res["unconfirm_#{field.to_s}"] = details[field]
         end
       end
-      res["unconfirm_setting"] = setting
+      if details.length > 0
+        res["unconfirm_setting"] = setting
+      end
       res.merge!(data || {})
     end
 

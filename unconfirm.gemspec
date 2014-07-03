@@ -17,9 +17,8 @@ Gem::Specification.new do |s|
                           future attempts at the same action.}
   s.homepage    = "https://github.com/lml/unconfirm"
   s.license       = "MIT"
-  s.files         = `git ls-files -z`.split("\x0")
-  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.files         = Dir["{app,config.db.lib}/**/*"] + ["Rakefile", "LICENSE", "README.md", "CONTRIBUTING.md"]
+  s.test_files    = Dir["spec/**/*"]
   s.require_paths = ["lib"]
 
   s.add_dependency "rails", "~> 3.2.17"

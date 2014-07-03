@@ -20,15 +20,11 @@ module Unconfirm
 
     def update_from_model(settings_model=nil)
       settings_model ||= UserSettings.for(current_user)
-      puts "Model initialized"
       if not settings_model.nil?
         settings = settings_model.truthy_settings
       end
-      puts "Settings initialized"
       settings ||= {}
-      puts settings
       session[:unconfirm_user_settings] = settings
-      puts "Session updated"
     end
 
   end

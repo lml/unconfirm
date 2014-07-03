@@ -8,26 +8,26 @@ module Unconfirm
     end
 
     def ensure_close_form_status(status)
-      get :index, :format => :json
+      get :show, :id => 0, :format => :json
       body = JSON.parse(response.body)
-      assert body.include? "success"
-      assert body["success"]
-      assert body.include? "settings"
+      expect(body).to include "success"
+      expect(body["success"]).to be true
+      expect(body).to include "settings"
       if status
-        assert body["settings"].include? "skip_user_confirmation_dialog_on_close_form"
-        assert body["settings"]["skip_user_confirmation_dialog_on_close_form"]
+        expect(body["settings"]).to include "skip_user_confirmation_dialog_on_close_form"
+        expect(body["settings"]["skip_user_confirmation_dialog_on_close_form"]).to be true
       else
-        refute body["settings"].include? "skip_user_confirmation_dialog_on_close_form"
+        expect(body["settings"]).not_to include "skip_user_confirmation_dialog_on_close_form"
       end
     end
 
     it 'should not fetch settings for unauthenticated user' do
-      get :index, :format => :json
+      get :show, :id => 0, :format => :json
       body = JSON.parse(response.body)
-      assert body.include? "success"
-      assert body["success"]
-      assert body.include? "settings"
-      refute body["settings"].include? "skip_user_confirmation_dialog_on_close_form"
+      expect(body).to include "success"
+      expect(body["success"]).to be true
+      expect(body).to include "settings"
+      expect(body["settings"]).not_to include "skip_user_confirmation_dialog_on_close_form"
     end
 
     it 'should fetch settings for authenticated user' do
@@ -39,8 +39,8 @@ module Unconfirm
       sign_in @user
       put :update, :id => @user.id, :settings=> {:skip_user_confirmation_dialog_on_close_form => true}, :format => :json
       body = JSON.parse(response.body)
-      assert body.include? "success"
-      assert body["success"]
+      expect(body).to include "success"
+      expect(body["success"]).to be true
       ensure_close_form_status true
     end
   end

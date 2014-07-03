@@ -12,14 +12,14 @@ module Unconfirm
 
     it 'retrieves default attribute values based on the setting providers' do
       sets = UserSettings.for @user
-      refute sets.skip_user_confirmation_dialog_on_close_form
+      expect(sets.skip_user_confirmation_dialog_on_close_form).not_to be true
     end
 
     it 'sets attribute values' do
       sets = UserSettings.for @user
       sets.update_attributes({skip_user_confirmation_dialog_on_close_form: true})
       newsets = UserSettings.for @user
-      assert newsets.skip_user_confirmation_dialog_on_close_form
+      expect(newsets.skip_user_confirmation_dialog_on_close_form).to be true
     end
 
     it 'gets descriptive values' do

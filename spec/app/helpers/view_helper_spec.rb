@@ -5,7 +5,7 @@ module Unconfirm
 
     def expect_dict_subset_of(d1, d2)
       d1.each do |k, v|
-        assert d2.include? k
+        expect(d2).to include k
         expect(d2[k]).to eq(v)
       end
     end

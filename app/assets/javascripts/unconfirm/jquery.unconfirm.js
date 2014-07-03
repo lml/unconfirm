@@ -4,8 +4,9 @@
     var Unconfirm = root.Unconfirm = function unconfirmRoot(options) {
         var self = this;
         if (typeof options === 'string') {
-            options = {};
-            options.actionSelector = options;
+            options = {
+                actionSelector: options
+            };
         }
         this.options = $.extend({}, Unconfirm.DefaultOptions, options);
         this.$selector = $(this.options.actionSelector);

@@ -74,7 +74,6 @@ module Unconfirm
       begin
         add_settings HashWithIndifferentAccess.new(YAML.load(File.open(f)))
       rescue Exception => ex
-        puts ex
         Rails.logger.warn "Failed to import settings #{f}"
         Rails.logger.warn ex
       end
