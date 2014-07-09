@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
                           future attempts at the same action.}
   s.homepage    = "https://github.com/lml/unconfirm"
   s.license       = "MIT"
-  s.files         = Dir["{app,config.db.lib}/**/*"] + ["Rakefile", "LICENSE", "README.md", "CONTRIBUTING.md"]
+  s.files         = Dir["{app, config, db, lib}/**/*"] + ["Rakefile", "LICENSE", "README.md", "CONTRIBUTING.md"]
   s.test_files    = Dir["spec/**/*"]
   s.require_paths = ["lib"]
 
